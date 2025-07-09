@@ -1,0 +1,22 @@
+{% extends 'main/base.html' %}
+{% block title %}Вход{% endblock %}
+{% block content %}
+<div class="d-flex align-items-center justify-content-center" style="min-height: 70vh;">
+  <div class="col-12 col-sm-8 col-md-5 col-lg-4 col-xl-3">
+    <h2 class="mb-4 text-center">Вход</h2>
+    {% if error %}
+      <div class="alert alert-danger text-center">{{ error }}</div>
+    {% endif %}
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <input type="text" class="form-control" name="username" placeholder="Логин" required autofocus>
+      </div>
+      <div class="mb-3">
+        <input type="password" class="form-control" name="password" placeholder="Пароль" required>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Войти</button>
+    </form>
+  </div>
+</div>
+{% endblock %}

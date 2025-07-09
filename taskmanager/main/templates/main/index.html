@@ -1,0 +1,29 @@
+{% extends 'main/base.html' %}
+{% block title %}Задачи{% endblock %}
+{% block content %}
+<h1>Задачи</h1>
+<form method="post" action="{% url 'main:add_task' %}" class="mb-3 d-flex">
+    {% csrf_token %}
+    <input class="form-control me-2" type="text" name="title" placeholder="Новая задача" required>
+    <button class="btn btn-success" type="submit">Добавить</button>
+</form>
+<table class="table table-striped">
+    <thead><tr><th>Задача</th><th>Статус</th><th></th></tr></thead>
+    <tbody>
+    {% for task in tasks %}
+        <tr>
+            <td>{% if task.completed %}<s>{{ task.title }}</s>{% else %}{{ task.title }}{% endif %}</td>
+            <td>{% if task.completed %}<span class="badge bg-success">Выполнено</span>{% else %}<span class="badge bg-warning text-dark">В работе</span>{% endif %}</td>
+            <td>
+                {% if not task.completed %}
+                    <a class="btn btn-sm btn-outline-primary me-2" href="{% url 'main:complete_task' task.id %}">Выполнить</a>
+                {% endif %}
+                <a class="btn btn-sm btn-outline-danger" href="{% url 'main:delete_task' task.id %}">Удалить</a>
+            </td>
+        </tr>
+    {% empty %}
+        <tr><td colspan="3">Нет задач</td></tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
