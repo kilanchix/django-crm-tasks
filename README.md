@@ -32,11 +32,9 @@
 
 ## Скриншоты
 
-![Главная страница](screenshots/main.png)
 ![Клиенты](screenshots/clients.png)
 ![Сделки](screenshots/deals.png)
 ![Задачи](screenshots/tasks.png)
-![Профиль пользователя](screenshots/profile.png)
 ![Логин](screenshots/login.png)
 
 ## Установка и запуск
